@@ -1,9 +1,13 @@
 package guiPractice8.simonGame;
 
-import guiPractice8.GUIApplication;
+import guiPackage.Screen;
 
-public class SimonGameDaniel extends GUIApplication{
+import guiPackage.guiApplication;
 
+public class SimonGameDaniel extends guiApplication{
+
+	public static SimonGameDaniel gameScreen;
+	
 	public SimonGameDaniel(int width, int height) {
 		super();
 	}
@@ -16,8 +20,8 @@ public class SimonGameDaniel extends GUIApplication{
 
 	@Override
 	protected void initScreen() {
-		SimonScreenDaniel ssd = new SimonScreenDaniel(getWidth(), getHeight());
-		setScreen(ssd);
+		gameScreen = new SimonGameDaniel(getWidth(), getHeight());
+		setScreen(gameScreen);
 		
 	}
 

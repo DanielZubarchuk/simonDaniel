@@ -15,7 +15,6 @@ public class SimonScreenDaniel extends ClickableScreen implements Runnable{
 	private ArrayList<MoveInterfaceDaniel> moves;
 	private ProgressInterfaceDaniel progress;
 	private TextLabel label;
-	private TextLabel timeLabel;
 	private double timeLeft;
 	private int roundNumber;
 	boolean acceptingInput;

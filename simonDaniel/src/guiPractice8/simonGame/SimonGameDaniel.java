@@ -1,9 +1,10 @@
 package guiPractice8.simonGame;
 
-import guiPackage.Screen;
-import guiPackage.guiApplication;
+import guiPractice8.Screen;
 
-public class SimonGameDaniel extends guiApplication{
+import guiPractice8.GUIApplication;
+
+public class SimonGameDaniel extends GUIApplication{
 
 	public static Screen gameScreen;
 	

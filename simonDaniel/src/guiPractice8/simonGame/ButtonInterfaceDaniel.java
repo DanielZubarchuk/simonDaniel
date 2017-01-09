@@ -2,8 +2,8 @@ package guiPractice8.simonGame;
 
 import java.awt.Color;
 
-import guiPackage.components.Action;
-import guiPackage.components.Clickable;
+import guiPractice8.component.Action;
+import guiPractice8.component.Clickable;
 
 public interface ButtonInterfaceDaniel extends Clickable {
 	void setColor(Color color);

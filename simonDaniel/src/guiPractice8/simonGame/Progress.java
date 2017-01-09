@@ -7,8 +7,9 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 
+import guiPractice8.component.Component;
 
-public class Progress implements ProgressInterfaceDaniel {
+public class Progress extends Component implements ProgressInterfaceDaniel {
 
 	private static final int WIDTH = 120;
 	private static final int HEIGHT = 50;
@@ -18,7 +19,7 @@ public class Progress implements ProgressInterfaceDaniel {
 	private String sequenceLength;
 
 	public Progress() {
-		super();
+		super(0, 0, WIDTH, HEIGHT);
 	}
 
 	public void setRound(int roundNumber) {
@@ -99,6 +100,11 @@ public class Progress implements ProgressInterfaceDaniel {
 
 	@Override
 	public void update() {
+
+	}
+
+	@Override
+	public void setSequenceSize(int s) {
 		// TODO Auto-generated method stub
 		
 	}

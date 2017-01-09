@@ -2,15 +2,18 @@ package guiPractice8.simonGame;
 
 import java.awt.Color;
 
+
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics2D;
 import java.awt.Polygon;
 import java.awt.RenderingHints;
 
-import guiPackage.components.Action;
-import guiPackage.components.Clickable;
-import guiPackage.components.TextLabel;
+import guiPractice8.component.Action;
+import guiPractice8.component.Clickable;
+import guiPractice8.component.TextLabel;
+
+
 
 public class Button extends TextLabel implements Clickable{
 
@@ -64,6 +67,21 @@ public class Button extends TextLabel implements Clickable{
 		g.fillOval(0, 0, WIDTH, HEIGHT);
 		g.setColor(Color.black);
 		g.drawOval(0, 0, WIDTH-1, HEIGHT-1);
+		
+		if(highlight){
+			g.setColor(Color.white);
+			Polygon p = new Polygon();
+			
+			int s = (int)(5/8.0 * WIDTH);
+			int t = (int)(1.0/5*HEIGHT)+4;
+			p.addPoint(s-4, t-4);
+			p.addPoint(s+7, t-2);
+			p.addPoint(s+10, t);
+			p.addPoint(s+14, t+10);
+			p.addPoint(s+12, t+14);
+			p.addPoint(s+8, t+3);
+			g.fill(p);
+		}
 	}
 	
 	private static String name;

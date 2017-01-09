@@ -5,10 +5,10 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
-import guiPractice8.component.Action;
-import guiPractice8.component.ClickableScreen;
-import guiPractice8.component.TextLabel;
-import guiPractice8.component.Visible;
+import guiPackage.components.Action;
+import guiPackage.components.TextLabel;
+import guiPackage.components.Visible;
+import guiPackage.sampleGames.ClickableScreen;
 
 public class SimonScreenDaniel extends ClickableScreen implements Runnable{
 
@@ -78,7 +78,6 @@ public class SimonScreenDaniel extends ClickableScreen implements Runnable{
 		
 	}
 
-	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
 
 		addButtons();
@@ -161,6 +160,12 @@ public class SimonScreenDaniel extends ClickableScreen implements Runnable{
 	private ButtonInterfaceDaniel getAButton() {
 		return null;
 		// helper method
+		
+	}
+
+	@Override
+	public void initAllObjects(ArrayList<Visible> arg0) {
+		// TODO Auto-generated method stub
 		
 	}
 

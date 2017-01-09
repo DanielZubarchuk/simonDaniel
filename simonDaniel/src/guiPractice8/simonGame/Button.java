@@ -8,9 +8,9 @@ import java.awt.Graphics2D;
 import java.awt.Polygon;
 import java.awt.RenderingHints;
 
-import guiPractice8.component.Action;
-import guiPractice8.component.Clickable;
-import guiPractice8.component.TextLabel;
+import guiPackage.components.Action;
+import guiPackage.components.Clickable;
+import guiPackage.components.TextLabel;
 
 public class Button extends TextLabel implements Clickable{
 
@@ -22,7 +22,7 @@ public class Button extends TextLabel implements Clickable{
 	private boolean highlight;
 	
 	public Button() {
-		super(0, 0, WIDTH,HEIGHT);
+		super(0, 0, WIDTH,HEIGHT, name);
 	}
 
 	public boolean isHovered(int x, int y) {
@@ -66,14 +66,13 @@ public class Button extends TextLabel implements Clickable{
 		g.drawOval(0, 0, WIDTH-1, HEIGHT-1);
 	}
 	
-	private String name;
+	private static String name;
+	
 	public void setName(String s){
 		this.name = s;
 	}
 	
 	public String toString(){
 		return name;
-	}
-
-	
+	}	
 }

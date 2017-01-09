@@ -5,8 +5,8 @@ import java.awt.Color;
 import java.awt.FontMetrics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.awt.image.BufferedImage;
 
-import guiPractice8.components.Component;
 
 public class Progress implements ProgressInterfaceDaniel {
 
@@ -18,7 +18,7 @@ public class Progress implements ProgressInterfaceDaniel {
 	private String sequenceLength;
 
 	public Progress() {
-		super(60, 60, WIDTH,HEIGHT);
+		super();
 	}
 
 	public void setRound(int roundNumber) {
@@ -34,10 +34,7 @@ public class Progress implements ProgressInterfaceDaniel {
 	public void setSequenceLength(int size) {
 		sequenceLength = "Sequence length "+ size;
 		update();
-	}
-
-	
-	
+	}	
 	
 	public void update(Graphics2D g) {
 		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
@@ -62,5 +59,47 @@ public class Progress implements ProgressInterfaceDaniel {
 				g.drawString(sequenceLength, (WIDTH - fm.stringWidth(sequenceLength))/2, 40);
 			}
 		}
+	}
+
+	@Override
+	public int getHeight() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public BufferedImage getImage() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int getWidth() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getX() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getY() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public boolean isAnimated() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		
 	}
 }

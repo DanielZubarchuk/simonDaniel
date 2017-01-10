@@ -6,6 +6,7 @@ import guiPractice8.component.Action;
 import guiPractice8.component.Clickable;
 
 public interface ButtonInterfaceDaniel extends Clickable {
+	
 	void setColor(Color color);
 
 	void highlight();
@@ -13,8 +14,6 @@ public interface ButtonInterfaceDaniel extends Clickable {
 	void dim();
 
 	void setAction(Action action);
-
-	void setName(String name);
 
 	void setX(int i);
 

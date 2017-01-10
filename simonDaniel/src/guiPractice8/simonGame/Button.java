@@ -2,17 +2,14 @@ package guiPractice8.simonGame;
 
 import java.awt.Color;
 
-import java.awt.Font;
-import java.awt.FontMetrics;
 import java.awt.Graphics2D;
 import java.awt.Polygon;
 import java.awt.RenderingHints;
 
 import guiPractice8.component.Action;
-import guiPractice8.component.Clickable;
-import guiPractice8.component.TextLabel;
+import guiPractice8.component.Component;
 
-public class Button extends TextLabel implements Clickable{
+public class Button extends Component implements ButtonInterfaceDaniel {
 
 	private static final int WIDTH = 50;
 	private static final int HEIGHT = 50;
@@ -22,41 +19,48 @@ public class Button extends TextLabel implements Clickable{
 	private boolean highlight;
 	
 	public Button() {
-		super(0, 0, WIDTH,HEIGHT, name);
+		super(0,0,WIDTH,HEIGHT);
 	}
 
-	public boolean isHovered(int x, int y) {
-		double distance = Math.sqrt(Math.pow(x - (getX() + WIDTH / 2), 2) + 
-				Math.pow(y-(getY() + HEIGHT/2), 2));
-		return distance < WIDTH/2;
-	}
-
-	public void act() {
-		action.act();
-	}
-
-	public void setColor(Color color) {
-		this.c = color;
-		displayColor = c;
-		update();
-	}
-
+	@Override
 	public void highlight() {
 		if(c != null) displayColor = c;
 		highlight = true;
 		update();
 	}
 
+	@Override
 	public void dim() {
 		displayColor = Color.gray;
 		highlight = false;
 		update();
 	}
 
+	@Override
 	public void setAction(Action action) {
 		this.action = action;
 	}
 
+	@Override
+	public void act() {
+		action.act();
+		
+	}
+
+	@Override
+	public boolean isHovered(int x, int y) {
+		double distance = Math.sqrt(Math.pow(x-(getX()+WIDTH/2), 2)+Math.pow(y-(getY()+HEIGHT/2), 2));
+		return distance < WIDTH/2;
+	}
+
+	@Override
+	public void setColor(Color color) {
+		this.c = color;
+		displayColor = c;
+		update();
+	}
+
+	@Override
 	public void update(Graphics2D g) {
 		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		if(displayColor != null) g.setColor(displayColor);
@@ -64,11 +68,9 @@ public class Button extends TextLabel implements Clickable{
 		g.fillOval(0, 0, WIDTH, HEIGHT);
 		g.setColor(Color.black);
 		g.drawOval(0, 0, WIDTH-1, HEIGHT-1);
-		
 		if(highlight){
 			g.setColor(Color.white);
 			Polygon p = new Polygon();
-			
 			int s = (int)(5/8.0 * WIDTH);
 			int t = (int)(1.0/5*HEIGHT)+4;
 			p.addPoint(s-4, t-4);
@@ -80,14 +82,14 @@ public class Button extends TextLabel implements Clickable{
 			g.fill(p);
 		}
 	}
-	
-	private static String name;
-	
+
+
+	private String name;
 	public void setName(String s){
 		this.name = s;
 	}
 	
 	public String toString(){
 		return name;
-	}	
+	}
 }

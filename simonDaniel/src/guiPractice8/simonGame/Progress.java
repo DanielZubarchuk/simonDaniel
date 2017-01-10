@@ -1,11 +1,9 @@
 package guiPractice8.simonGame;
 
 import java.awt.Color;
-
 import java.awt.FontMetrics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
-import java.awt.image.BufferedImage;
 
 import guiPractice8.component.Component;
 
@@ -14,32 +12,33 @@ public class Progress extends Component implements ProgressInterfaceDaniel {
 	private static final int WIDTH = 120;
 	private static final int HEIGHT = 50;
 
-	private boolean gameOver;
 	private String round;
 	private String sequence;
-
+	private boolean gameOver;
+	
 	public Progress() {
 		super(60,60,WIDTH,HEIGHT);
 	}
 
-
-
-	public void setRound(int roundNumber) {
-		round = "Round "+roundNumber;
-		update();
-	}
-
-	public void setSequenceLength(int size) {
-		sequence = "Sequence length "+size;
-		update();
-	}
-
+	@Override
 	public void gameOver() {
 		gameOver = true;
 		update();
 	}
 
+	@Override
+	public void setRound(int r) {
+		round = "Round# " + r;
+		update();
 
+	}
+
+	@Override
+	public void setSequenceSize(int s) {
+		sequence = "Sequence length "  + s;
+		update();
+
+	}
 
 	@Override
 	public void update(Graphics2D g) {

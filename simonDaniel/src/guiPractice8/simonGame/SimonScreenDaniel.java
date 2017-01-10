@@ -69,7 +69,7 @@ public class SimonScreenDaniel extends ClickableScreen implements Runnable {
 							return;
 						}
 						if(sequenceIndex == sequence.size()){
-							Thread nextRound = new Thread(SimonScreen.this);
+							Thread nextRound = new Thread(SimonScreenDaniel.this);
 							nextRound.start();
 						}
 					}

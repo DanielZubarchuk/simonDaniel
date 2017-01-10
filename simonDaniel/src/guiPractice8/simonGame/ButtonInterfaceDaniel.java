@@ -8,13 +8,15 @@ import guiPractice8.component.Clickable;
 public interface ButtonInterfaceDaniel extends Clickable {
 	void setColor(Color color);
 
-	void setX(int i);
-
-	void setY(int i);
-	
-	void setAction(Action a);
-
 	void highlight();
 
 	void dim();
+
+	void setAction(Action action);
+
+	void setName(String name);
+
+	void setX(int i);
+
+	void setY(int i);
 }

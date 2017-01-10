@@ -2,7 +2,6 @@ package guiPractice8.simonGame;
 
 import java.awt.Color;
 
-
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics2D;
@@ -12,8 +11,6 @@ import java.awt.RenderingHints;
 import guiPractice8.component.Action;
 import guiPractice8.component.Clickable;
 import guiPractice8.component.TextLabel;
-
-
 
 public class Button extends TextLabel implements Clickable{
 

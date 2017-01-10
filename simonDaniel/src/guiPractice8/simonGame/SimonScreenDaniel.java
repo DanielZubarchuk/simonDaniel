@@ -27,7 +27,23 @@ public class SimonScreenDaniel extends ClickableScreen implements Runnable {
 		Thread app = new Thread(this);
 		app.start();
 	}
-	
+
+	private void playSequence() {
+		ButtonInterfaceDaniel b = null;
+		for(int i=0;i<sequence.size();i++){
+			if(b!=null)b.dim();
+			b = sequence.get(i).getButton();
+			b.highlight();
+			try {
+				Thread.sleep((long)(2000*(2.0/(roundNumber+2))));
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			
+		}
+		b.dim();
+	}
+
 	@Override
 	public void run() {
 		label.setText("");
@@ -48,23 +64,7 @@ public class SimonScreenDaniel extends ClickableScreen implements Runnable {
 		acceptingInput = true;
 		sequenceIndex = 0;
 	}
-
-	private void playSequence() {
-		ButtonInterfaceDaniel b = null;
-		for(int i=0;i<sequence.size();i++){
-			if(b!=null)b.dim();
-			b = sequence.get(i).getButton();
-			b.highlight();
-			try {
-				Thread.sleep((long)(2000*(2.0/(roundNumber+2))));
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			
-		}
-		b.dim();
-	}
-
+	
 	private void changeText(String string) {
 		try{
 			label.setText(string);
@@ -91,15 +91,17 @@ public class SimonScreenDaniel extends ClickableScreen implements Runnable {
 	}
 
 	public void addButtons(List<Visible> viewObjects) {
-		int numOfButtons = 5;
+		int numOfButtons = 7;
 		button = new ButtonInterfaceDaniel[numOfButtons];
-		Color[] colors= {Color.blue,Color.red,Color.magenta, Color.yellow, 
-				Color.green};
-		for(int i= 0; i<numOfButtons; i++){
+		
+		Color[] colors= {Color.orange, Color.red, Color.black, Color.yellow, 
+				Color.green, Color.magenta, Color.darkGray};
+		
+		for(int i= 0; i < numOfButtons; i++){
 			button[i] = getAButton();
 			button[i].setColor(colors[i]);
-			button[i].setX(260 + (int)(60*Math.cos(i*2*Math.PI/(numOfButtons))));
-			button[i].setY(200 - (int)(60*Math.sin(i*2*Math.PI/(numOfButtons))));
+			button[i].setX(260 + (int)(60*Math.cos(i * 2 * Math.PI/(numOfButtons))));
+			button[i].setY(200 - (int)(60*Math.sin(i * 2 * Math.PI/(numOfButtons))));
 			final ButtonInterfaceDaniel b = button[i];
 			b.dim();
 			b.setAction(new Action(){
@@ -117,12 +119,14 @@ public class SimonScreenDaniel extends ClickableScreen implements Runnable {
 							
 					});
 					blink.start();
+					
 					if(acceptingInput && sequence.get(sequenceIndex).getButton() == b){
 						sequenceIndex++;
 					}else if(acceptingInput){
 						progress.gameOver();
 						return;
 					}
+					
 					if(sequenceIndex == sequence.size()){
 						Thread nextRound = new Thread(SimonScreenDaniel.this);
 						nextRound.start();
@@ -144,8 +148,8 @@ public class SimonScreenDaniel extends ClickableScreen implements Runnable {
 		sequence = new ArrayList<MoveInterfaceDaniel>();
 		addButtons(viewObjects);
 		progress = getProgress();
-		label = new TextLabel(220,310,300,40,"Let's play Simon!");
-		//add 2 moves to start
+		label = new TextLabel(220, 310, 300, 40, "Let's play Simon!");
+		
 		lastSelectedButton = -1;
 		sequence.add(randomMove());
 		sequence.add(randomMove());

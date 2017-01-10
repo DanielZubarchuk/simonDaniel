@@ -9,17 +9,40 @@ import guiPractice8.component.Component;
 
 public class Progress extends Component implements ProgressInterfaceDaniel {
 
-	private static final int WIDTH = 120;
-	private static final int HEIGHT = 50;
-
 	private String round;
 	private String sequence;
 	private boolean gameOver;
 	
 	public Progress() {
-		super(60,60,WIDTH,HEIGHT);
+		super(60, 60, 120, 50);
 	}
 
+	@Override
+	public void update(Graphics2D g) {
+		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+		FontMetrics fm = g.getFontMetrics();
+		
+		if(gameOver){
+			g.setColor(new Color(255, 80, 90));
+			g.fillRect(0, 0, 120, 50);
+			g.setColor(Color.white);
+			String go = "GAME OVER! You lost!";
+			g.drawString(go, (120 - fm.stringWidth(go))/2, 20);
+			g.drawString(sequence, (120 - fm.stringWidth(sequence))/2, 40);
+
+		}else{
+			g.setColor(new Color(220,255,230));
+			g.fillRect(0, 0, 120, 50);
+			g.setColor(Color.black);
+			g.drawRect(0, 0, 120 - 1, 50 - 1);
+			if(round !=null && sequence != null){
+
+				g.drawString(round, (120 - fm.stringWidth(round))/2, 20);
+				g.drawString(sequence, (120 - fm.stringWidth(sequence))/2, 40);
+			}
+		}
+	}
+	
 	@Override
 	public void gameOver() {
 		gameOver = true;
@@ -38,30 +61,5 @@ public class Progress extends Component implements ProgressInterfaceDaniel {
 		sequence = "Sequence length "  + s;
 		update();
 
-	}
-
-	@Override
-	public void update(Graphics2D g) {
-		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-		FontMetrics fm = g.getFontMetrics();
-		if(gameOver){
-			g.setColor(new Color(255,55,90));
-			g.fillRect(0, 0, WIDTH, HEIGHT);
-			g.setColor(Color.white);
-			String go = "GAME OVER!";
-			g.drawString(go, (WIDTH - fm.stringWidth(go))/2, 20);
-			g.drawString(sequence, (WIDTH - fm.stringWidth(sequence))/2, 40);
-
-		}else{
-			g.setColor(new Color(220,255,230));
-			g.fillRect(0, 0, WIDTH, HEIGHT);
-			g.setColor(Color.black);
-			g.drawRect(0, 0, WIDTH-1, HEIGHT-1);
-			if(round !=null && sequence != null){
-
-				g.drawString(round, (WIDTH - fm.stringWidth(round))/2, 20);
-				g.drawString(sequence, (WIDTH - fm.stringWidth(sequence))/2, 40);
-			}
-		}
 	}
 }

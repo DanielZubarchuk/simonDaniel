@@ -4,9 +4,6 @@ import guiPractice8.GUIApplication;
 
 public class SimonGameDaniel extends GUIApplication {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 4297926260023939521L;
 
 	public SimonGameDaniel() {
